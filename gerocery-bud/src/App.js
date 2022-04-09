@@ -21,6 +21,18 @@ export default function App() {
     }
     else if(name && isEditing) {
       // deal with edit 
+      setList(
+        list.map((item) => {
+          if (item.id === editID) {
+            return { ...item,title: name};
+          }
+          return item;
+        })
+      );
+      setName('');
+      setEditID(null);
+      setIsEditing(false);
+      showAlert(true, 'success', 'value changed');
     }
     else {
       // show alert 
